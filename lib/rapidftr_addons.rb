@@ -1,5 +1,8 @@
 require "rapidftr_addons/version"
 
 module RapidftrAddons
-  # Your code goes here...
+
+  autoload :Addon,      'rapidftr_addons/addon'  
+  autoload :ExportTask, 'rapidftr_addons/export_task'
+
 end
