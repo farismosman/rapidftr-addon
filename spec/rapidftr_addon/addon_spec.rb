@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe RapidftrAddons::Addon do
+describe RapidftrAddon::Addon do
   class DummyAddon
-    extend RapidftrAddons::Addon
+    extend RapidftrAddon::Addon
   end
 
   class DummyAddonImpl < DummyAddon

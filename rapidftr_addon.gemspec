@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rapidftr_addons/version'
+require 'rapidftr_addon/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "rapidftr_addons"
-  gem.version       = RapidftrAddons::VERSION
+  gem.name          = "rapidftr_addon"
+  gem.version       = RapidftrAddon::VERSION
   gem.authors       = ["Faris Mohammed"]
   gem.email         = ["farismosman@gmail.com"]
   gem.description   = %q{TODO: Write a gem description}

@@ -1,6 +1,6 @@
 require 'active_support/core_ext/class'
 
-module RapidftrAddons
+module RapidftrAddon
   module Addon
     def enabled?
       true
