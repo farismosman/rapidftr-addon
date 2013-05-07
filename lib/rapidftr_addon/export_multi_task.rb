@@ -1,5 +1,5 @@
 module RapidftrAddon
-  class ExportTask
+  class ExportMultiTask
     extend Addon
 
     # Will yield a filename for each exported record
