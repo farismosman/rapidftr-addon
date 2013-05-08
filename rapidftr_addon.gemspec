@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = RapidftrAddon::VERSION
   gem.authors       = ["Faris Mohammed"]
   gem.email         = ["farismosman@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Collection of interfaces to extend RapidFTR}
+  gem.summary       = %q{Collection of interfaces to extend RapidFTR}
+  gem.homepage      = "https://github.com/farismosman/rapidftr-addon"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
