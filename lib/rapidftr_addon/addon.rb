@@ -14,12 +14,16 @@ module RapidftrAddon
       @enabled = false
     end
 
-    def name
+    def addon_id
       raise "Not Implemented"
     end
 
     def implementations
       descendants.select(&:enabled?)
+    end
+
+    def find_by_addon_id(id)
+      implementations.find { |impl| impl.addon_id == id }
     end
   end
 end

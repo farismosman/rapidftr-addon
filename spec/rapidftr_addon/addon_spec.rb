@@ -6,12 +6,13 @@ describe RapidftrAddon::Addon do
   end
 
   class DummyAddonImpl < DummyAddon
+    def self.addon_id
+      :dummy_addon_impl
+    end
   end
 
-  it 'should have name' do
-    lambda {
-      DummyAddon.name
-    }.should raise_error("Not Implemented")
+  it 'default name method should raise Not Implemented error' do
+    lambda { DummyAddon.addon_id }.should raise_error("Not Implemented")
   end
 
   it 'should not be enabled first time' do
@@ -26,5 +27,19 @@ describe RapidftrAddon::Addon do
   it 'should disable addon' do
     DummyAddonImpl.disable
     DummyAddon.implementations.should be_empty
+  end
+
+  it 'should return addon id' do
+    DummyAddonImpl.addon_id.should == :dummy_addon_impl
+  end
+
+  it 'should find enabled addon by name' do
+    DummyAddonImpl.stub! :enabled? => true
+    DummyAddon.find_by_addon_id(:dummy_addon_impl).should == DummyAddonImpl
+  end
+
+  it 'should not find disabled addon by name' do
+    DummyAddonImpl.stub! :enabled? => false
+    DummyAddon.find_by_addon_id(:dummy_addon_impl).should == nil
   end
 end
