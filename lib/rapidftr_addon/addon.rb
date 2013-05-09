@@ -3,7 +3,15 @@ require 'active_support/core_ext/class'
 module RapidftrAddon
   module Addon
     def enabled?
-      true
+      @enabled
+    end
+
+    def enable
+      @enabled = true
+    end
+
+    def disable
+      @enabled = false
     end
 
     def name

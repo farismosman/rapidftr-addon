@@ -14,16 +14,17 @@ describe RapidftrAddon::Addon do
     }.should raise_error("Not Implemented")
   end
 
-  it 'should have enabled?' do
-    DummyAddon.should be_enabled
+  it 'should not be enabled first time' do
+    DummyAddonImpl.should_not be_enabled
   end
 
-  it 'should list enabled implementations' do
-    DummyAddon.implementations.should == [ DummyAddonImpl ]
+  it 'should enable addon' do
+    DummyAddonImpl.enable
+    DummyAddon.implementations.should include DummyAddonImpl
   end
 
-  it 'should not list disabled implementations' do
-    DummyAddonImpl.stub! :enabled? => false
+  it 'should disable addon' do
+    DummyAddonImpl.disable
     DummyAddon.implementations.should be_empty
   end
 end
