@@ -14,7 +14,12 @@ module RapidftrAddon
     end
 
     def options
-      @options || {}
+      opts = {}
+      self.ancestors.each do |clazz|
+        opts.merge! clazz.options if clazz != self && clazz.is_a?(Addon)
+      end
+      opts.merge! @options if @options
+      opts
     end
 
     def enable(options = nil)

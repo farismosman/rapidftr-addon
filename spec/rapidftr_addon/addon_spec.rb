@@ -17,6 +17,10 @@ describe RapidftrAddon::Addon do
     end
   end
 
+  before :each do
+    FooAddon.enabled = BarAddon.enabled = false
+  end
+
   it 'default name method should raise Not Implemented error' do
     lambda { DummyAddon.id }.should raise_error("Not Implemented")
   end
@@ -53,6 +57,21 @@ describe RapidftrAddon::Addon do
     addon2 = Class.new(DummyAddon)
     addon2.enable
     DummyAddon.active.should == [ addon2 ]
+  end
+
+  it 'should set options to empty hash' do
+    FooAddon.options.should == {}
+  end
+
+  it 'enable should set options' do
+    BarAddon.enable :option1 => "value1"
+    BarAddon.options.should include :option1 => "value1"
+  end
+
+  it 'should merge options from ancestors' do
+    DummyAddon.options = { :option1 => "value1", :option2 => "value2" }
+    FooAddon.options = { :option2 => "override2", :option3 => "value3" }
+    FooAddon.options.should include :option1 => "value1", :option2 => "override2", :option3 => "value3"
   end
 
 end
