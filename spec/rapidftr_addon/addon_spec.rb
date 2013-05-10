@@ -42,4 +42,10 @@ describe RapidftrAddon::Addon do
     DummyAddonImpl.stub! :enabled? => false
     DummyAddon.find_by_addon_id(:dummy_addon_impl).should == nil
   end
+
+  it 'should not mix enabled between two classes' do
+    addon2 = Class.new(DummyAddon)
+    DummyAddonImpl.enable
+    addon2.should_not be_enabled
+  end
 end

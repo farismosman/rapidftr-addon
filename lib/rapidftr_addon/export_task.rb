@@ -2,13 +2,7 @@ module RapidftrAddon
   class ExportTask
     extend Addon
 
-    class Result
-      attr_accessor :filename, :data
-
-      def initialize(filename, data)
-        @filename = filename
-        @data = data
-      end
+    class Result < Struct.new(:filename, :data)
     end
 
     def export(children)

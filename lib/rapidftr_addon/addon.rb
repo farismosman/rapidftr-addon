@@ -3,7 +3,7 @@ require 'active_support/core_ext/class'
 module RapidftrAddon
   module Addon
     def enabled?
-      @enabled
+      @enabled || false
     end
 
     def enable
