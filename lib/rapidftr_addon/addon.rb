@@ -2,28 +2,36 @@ require 'active_support/core_ext/class'
 
 module RapidftrAddon
   module Addon
-    def enabled?
-      @enabled || false
-    end
+    attr_writer :enabled
+    attr_writer :options
 
-    def enable
-      @enabled = true
-    end
-
-    def disable
-      @enabled = false
-    end
-
-    def addon_id
+    def id
       raise "Not Implemented"
     end
 
-    def implementations
+    def enabled?
+      @enabled
+    end
+
+    def options
+      @options || {}
+    end
+
+    def enable(options = nil)
+      self.enabled = true
+      self.options = options if options
+    end
+
+    def all
+      descendants
+    end
+
+    def active
       descendants.select(&:enabled?)
     end
 
-    def find_by_addon_id(id)
-      implementations.find { |impl| impl.addon_id == id }
+    def find_by_id(id)
+      active.find { |impl| impl.id == id }
     end
   end
 end
